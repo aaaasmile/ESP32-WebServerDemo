@@ -1,0 +1,25 @@
+#WebServerDemo
+Primo progetto con ESP32. Come piattaforma uso esp32dev.
+Ho seguito principalmente le istruzioni del video https://www.youtube.com/watch?v=NVD46mRbVXM&ab_channel=atomic14.
+Per il setup e vedere se il chip funziona ho usato arduino ide seguendo il tutorial preso da
+https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
+Nota che ESP32 e EP8266 sono due piattaforme diverese che devono essere messe entrambe
+nelle preferenze per poterle poi selezionare. 
+Come progetto di esempio ho usato Wifi Scan che ha funzionato al primo colpo.
+Queste le info del chip:
+Chip is ESP32-D0WDQ6 (revision 1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 7c:9e:bd:f3:d1:b0
+Manufacturer: d8
+Device: 4016
+Detected flash size: 4MB
+
+## Upload del firmware
+Dopo aver installato la piattaforma ESP32 in PlatformIO esptool in vcode sembra non più funzionare.
+
+Questo il comando che sembra usare:
+python.exe "C:\Users\igors\.platformio\packages\tool-esptoolpy\esptool.py" --chip esp32 --port "COM4" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 C:\Users\igors\.platformio\packages\framework-arduinoespressif32\tools\sdk\bin\bootloader_dio_40m.bin 0x8000 D:\Arduino\PlatformIO\WebServerDemo\.pio\build\esp32dev\partitions.bin 0xe000 C:\Users\igors\.platformio\packages\framework-arduinoespressif32\tools\partitions\boot_app0.bin 0x10000 .pio\build\esp32dev\firmware.bin
+
+Il comando l'ho trovato usando (pio upload in comando verbose):
+C:\Users\igors\.platformio\penv\Scripts\pio.exe run -t upload -v
