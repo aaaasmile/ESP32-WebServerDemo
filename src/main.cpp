@@ -2,6 +2,7 @@
 #include <AsyncJson.h>
 #include <ESPAsyncWebServer.h>
 #include <ESPmDNS.h>
+#include <SPIFFS.h>
 
 #include "secret.h"
 
@@ -22,6 +23,8 @@ void setup() {
   }
   Serial.println("Wifi connected");
   Serial.println(WiFi.localIP());
+  
+  SPIFFS.begin();
 
   MDNS.begin("MySt32-Web");
   pinMode(BUILTIN_LED, OUTPUT);
@@ -41,7 +44,7 @@ void setup() {
     request->send(200, "OK");
   }));
 
-  //server.serveStatic("/", SPIFFS, "/").setDefaultFile("index.html");
+  server.serveStatic("/", SPIFFS, "/").setDefaultFile("index.html");
 
   server.onNotFound([](AsyncWebServerRequest *request) {
     if (request->method() == HTTP_OPTIONS) {
