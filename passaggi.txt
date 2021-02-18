@@ -1,4 +1,4 @@
-#WebServerDemo
+#ESP32-WebServerDemo
 Primo progetto con ESP32. Come piattaforma uso esp32dev.
 Ho seguito principalmente le istruzioni del video https://www.youtube.com/watch?v=NVD46mRbVXM&ab_channel=atomic14.
 Per il setup e vedere se il chip funziona ho usato arduino ide seguendo il tutorial preso da
