@@ -23,3 +23,9 @@ python.exe "C:\Users\igors\.platformio\packages\tool-esptoolpy\esptool.py" --chi
 
 Il comando l'ho trovato usando (pio upload in comando verbose):
 C:\Users\igors\.platformio\penv\Scripts\pio.exe run -t upload -v
+
+## Wifi Network
+Wifi connected
+Due modi per collegarsi con il browser:
+http://192.168.2.181 
+http://MySt32-Web
